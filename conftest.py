@@ -26,8 +26,8 @@ def random_user_data():
         login_response = UserMethods.login_user(user_data)
         
         if login_response.status_code == 200:
-            access_token = login_response.json().get('accessToken')
-            if access_token:
-                UserMethods.delete_user(access_token)
+            token = login_response.json().get('accessToken')
+            if token:
+                UserMethods.delete_user(token)
     except Exception:
         pass
