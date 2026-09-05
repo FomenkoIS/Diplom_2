@@ -4,3 +4,4 @@ class URL:
     USER_LOGIN_ENDPOINT = f"{BASE_URL}/api/auth/login"
     ORDER_CREATE_ENDPOINT = f"{BASE_URL}/api/orders"
     DELETE_USER_ENDPOINT = f"{BASE_URL}/api/auth/user"
+    LIST_OF_INGREDIENTS = f"{BASE_URL}/api/ingredients"

@@ -8,7 +8,7 @@ class TestCreateUser:
 
 
     @allure.title("Создание уникального пользователя")
-    @allure.description("Проверка успешного создания пользователя, ответ 200 и и success=true")
+    @allure.description("Проверка успешного создания пользователя, ответ 200 и success=true")
     def test_create_unique_user_succeed(self, random_user_data):
 
         user_data = random_user_data
