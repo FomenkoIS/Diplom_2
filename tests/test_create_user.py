@@ -8,7 +8,7 @@ class TestCreateUser:
 
 
     @allure.title("Создание уникального пользователя")
-    @allure.description("Проверка успешного создания курьера с логином Bam")
+    @allure.description("Проверка успешного создания пользователя, ответ 200 и и success=true")
     def test_create_unique_user_succeed(self, random_user_data):
 
         user_data = random_user_data
@@ -35,12 +35,12 @@ class TestCreateUser:
         assert response_2.json()['success'] is False
 
 
-    @allure.title("создать пользователя, если не заполнить поле Логин(name)")
+    @allure.title("создание пользователя, если не заполнено поле Логин(email)")
     @allure.description("Проверка, что если не заполнить обязательное поле Логин возвращается 401 и success=false")
     def test_create_user_without_name_failed(self, random_user_data):
 
         user_data = random_user_data.copy()
-        del user_data['name']
+        del user_data['email']
 
         response= UserMethods.create_user(user_data)
       
@@ -50,7 +50,7 @@ class TestCreateUser:
 
 
 
-    @allure.title("создать пользователя, если не заполнить поле Пароль")
+    @allure.title("создание пользователя, если не заполнено поле Пароль")
     @allure.description("Проверка, что если не заполнить обязательное поле Пароль возвращается 401 и success=false")
     def test_create_user_without_password_failed(self, random_user_data):
             
