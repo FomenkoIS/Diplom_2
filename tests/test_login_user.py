@@ -36,7 +36,7 @@ class TestLoginUser:
             
         assert response_login.status_code == 401
         assert response_login.json()['success'] is False
-        assert 'email or password is incorrect' in response_login.json()['message'] 
+        assert 'email or password are incorrect' in response_login.json()['message'] 
 
 
     @allure.title("Логин c неверным паролем")
@@ -55,4 +55,4 @@ class TestLoginUser:
                 
         assert response_login.status_code == 401
         assert response_login.json()['success'] is False
-        assert 'email or password is incorrect' in response_login.json()['message'] 
+        assert 'email or password are incorrect' in response_login.json()['message'] 

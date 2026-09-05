@@ -9,9 +9,9 @@ faker = Faker()
 
 @pytest.fixture
 def random_user_data():
-    email = faker.email()
+    email = faker.email(domain='yandex.ru')
     password = faker.password(length=6, special_chars=True, digits=True)
-    name = faker.name()
+    name = faker.user_name()
     
     user_data = {
         'email': email,

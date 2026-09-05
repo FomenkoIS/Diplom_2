@@ -1,6 +1,4 @@
-
 from api_methods.ingredients_methods import IngredientsMethods
-
 
 
 class DataForOrder:
@@ -10,7 +8,7 @@ class DataForOrder:
 
         response = IngredientsMethods.get_ingredients()
         assert response.status_code == 200, "Не удалось получить ингредиенты"
-        
+
         data = response.json()
 
         list_of_id = []

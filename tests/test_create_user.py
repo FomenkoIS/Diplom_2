@@ -36,7 +36,7 @@ class TestCreateUser:
 
 
     @allure.title("создание пользователя, если не заполнено поле Логин(email)")
-    @allure.description("Проверка, что если не заполнить обязательное поле Логин возвращается 401 и success=false")
+    @allure.description("Проверка, что если не заполнить обязательное поле Логин возвращается 403 и success=false")
     def test_create_user_without_name_failed(self, random_user_data):
 
         user_data = random_user_data.copy()
@@ -44,14 +44,14 @@ class TestCreateUser:
 
         response= UserMethods.create_user(user_data)
       
-        assert response.status_code == 401, f"Expected status code 401, but got {response.status_code}"
+        assert response.status_code == 403, f"Expected status code 403, but got {response.status_code}"
         assert response.json()['success'] is False
 
 
 
 
     @allure.title("создание пользователя, если не заполнено поле Пароль")
-    @allure.description("Проверка, что если не заполнить обязательное поле Пароль возвращается 401 и success=false")
+    @allure.description("Проверка, что если не заполнить обязательное поле Пароль возвращается 403 и success=false")
     def test_create_user_without_password_failed(self, random_user_data):
             
         user_data = random_user_data.copy()
@@ -59,5 +59,5 @@ class TestCreateUser:
         
         response= UserMethods.create_user(user_data)
               
-        assert response.status_code == 401, f"Expected status code 401, but got {response.status_code}"
+        assert response.status_code == 403, f"Expected status code 403, but got {response.status_code}"
         assert response.json()['success'] is False
