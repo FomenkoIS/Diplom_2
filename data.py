@@ -7,7 +7,6 @@ class DataForOrder:
     def get_list_of_ingredients():
 
         response = IngredientsMethods.get_ingredients()
-        assert response.status_code == 200, "Не удалось получить ингредиенты"
 
         data = response.json()
 

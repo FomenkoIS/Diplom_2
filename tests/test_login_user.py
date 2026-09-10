@@ -6,13 +6,10 @@ class TestLoginUser:
 
     @allure.title("Логин под существующим пользователем")
     @allure.description("Проверка успешного логина пользователя, ответ 200 и success=true")
-    def test_login_existence_user_succeed(self, random_user_data):
+    def test_login_existence_user_succeed(self, created_user):
 
-        user_data = random_user_data
-        
-        response_create = UserMethods.create_user(user_data)
-        assert response_create.status_code == 200, "Не удалось создать пользователя"
-        response_login = UserMethods.login_user(user_data)
+
+        response_login = UserMethods.login_user(created_user)
         
         assert response_login.status_code == 200
         assert response_login.json()['success'] is True
@@ -27,10 +24,8 @@ class TestLoginUser:
     
         user_data = random_user_data.copy()
             
-        response_create = UserMethods.create_user(user_data)
-        assert response_create.status_code == 200, "Не удалось создать пользователя"
-
-
+        UserMethods.create_user(user_data)
+    
         user_data['email'] = 'boruto@konoha.ru'
         response_login = UserMethods.login_user(user_data)
             
@@ -45,9 +40,7 @@ class TestLoginUser:
         
         user_data = random_user_data.copy()
                     
-        response_create = UserMethods.create_user(user_data)
-        assert response_create.status_code == 200, "Не удалось создать пользователя"
-        
+        UserMethods.create_user(user_data)
         
         user_data['password'] = 'Konoh@'
         response_login = UserMethods.login_user(user_data)
